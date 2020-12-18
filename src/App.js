@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Sidebar from "react-sidebar";
+import Roster from "./components/Roster";
+import TeamList from "./components/TeamList";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sidebarOpen: true,
+    };
+    this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
+  }
+
+  onSetSidebarOpen(open) {
+    this.setState({ sidebarOpen: open });
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        <Router>
+          <Sidebar
+            sidebar={<TeamList sidebarOpen={this.onSetSidebarOpen} />}
+            open={this.state.sidebarOpen}
+            onSetOpen={this.onSetSidebarOpen}
+            styles={{ sidebar: { background: "white" } }}
+          >
+            <button
+              onClick={() => this.onSetSidebarOpen(true)}
+              className="btn-select"
+            >
+              ❮ Select team
+            </button>
+            <Switch>
+              <Route path="/roster/:id" component={Roster} key={Date()} />
+            </Switch>
+          </Sidebar>
+        </Router>
+      </React.Fragment>
+    );
+  }
 }
 
 export default App;

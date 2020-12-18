@@ -1,0 +1,35 @@
+.players-table {
+  padding-left: 20%;
+}
+
+.player-listing {
+  font: 1em sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: medium;
+  color: black;
+}
+
+.player-link {
+  color: black;
+  padding-left: 10px;
+}
+
+.player-link:hover {
+  background-color: coral;
+}
+
+.player-thumbnail {
+  height: 40px;
+  width: 30px;
+  padding-right: 10px;
+}
+
+.player-jersey {
+  font-size: 25px;
+  width: 15px;
+  text-align: right;
+}
+
+.player-position {
+  padding-left: 7px;
+}
