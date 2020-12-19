@@ -44,23 +44,25 @@ class Team extends Component {
       return (
         <React.Fragment>
           <table className="team-container">
-            <tr>
-              <td rowSpan="2" width="5%" height="5%">
-                <img
-                  src={"../assets/team/" + team.logo}
-                  alt={team.name}
-                  className="team-logo-big"
-                />
-              </td>
-              <td>
-                <div className="team-city-big">{team.city.toLowerCase()}</div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div className="team-name-big">{team.name}</div>
-              </td>
-            </tr>
+            <tbody>
+              <tr>
+                <td rowSpan="2" width="5%" height="5%">
+                  <img
+                    src={"../assets/team/" + team.logo}
+                    alt={team.name}
+                    className="team-logo-big"
+                  />
+                </td>
+                <td>
+                  <div className="team-city-big">{team.city.toLowerCase()}</div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div className="team-name-big">{team.name}</div>
+                </td>
+              </tr>
+            </tbody>
           </table>
         </React.Fragment>
       );

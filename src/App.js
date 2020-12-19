@@ -4,6 +4,7 @@ import Sidebar from "react-sidebar";
 import Roster from "./components/Roster";
 import TeamList from "./components/TeamList";
 import "./App.css";
+import Player from "./components/Player";
 
 class App extends React.Component {
   constructor(props) {
@@ -36,6 +37,7 @@ class App extends React.Component {
             </button>
             <Switch>
               <Route path="/roster/:id" component={Roster} key={Date()} />
+              <Route path="/player/:id" component={Player} key={Date()} />
             </Switch>
           </Sidebar>
         </Router>

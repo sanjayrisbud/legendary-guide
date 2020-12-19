@@ -14,7 +14,8 @@ class Roster extends Component {
       id: this.props.match.params.id,
     };
   }
-  componentDidMount() {
+
+  getRoster() {
     fetch("https://localhost:44313/api/Players/team/" + this.state.id)
       .then((res) => res.json())
       .then(
@@ -35,6 +36,18 @@ class Roster extends Component {
         }
       );
   }
+
+  componentDidMount() {
+    this.getRoster();
+  }
+
+  componentDidUpdate() {
+    if (this.props.location.search !== "") {
+      this.props.location.search = "";
+      this.getRoster();
+    }
+  }
+
   render() {
     const { error, isLoaded, players } = this.state;
     if (error) {
@@ -45,31 +58,39 @@ class Roster extends Component {
       return (
         <React.Fragment>
           <Team id={this.state.id} />
-          <table className="players-table">
-            <tbody>
-              {players.map((player) => (
-                <tr key={player.objectKey} className="player-listing">
-                  <td>
-                    <img
-                      src={"../assets/player/" + player.headshot}
-                      alt={player.name}
-                      className="player-thumbnail"
-                    />
-                  </td>
-                  <td className="player-jersey">{player.jersey}</td>
-                  <td>
-                    <Link
-                      to={"/player/" + player.objectKey}
-                      className="player-link"
-                    >
-                      {player.name}
-                    </Link>
-                  </td>
-                  <td className="player-position">{player.position}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <div className="grid-container">
+            {players.map((player) => (
+              <div key={player.objectKey}>
+                <table width="100%">
+                  <tbody>
+                    <tr>
+                      <td width="25%">
+                        <img
+                          src={"../assets/player/" + player.headshot}
+                          alt={player.jersey}
+                          className="player-thumbnail"
+                        />
+                      </td>
+
+                      <td width="10%">
+                        <div className="player-jersey">{player.jersey}</div>
+                      </td>
+                      <td>
+                        <div>
+                          <Link
+                            to={"/player/" + player.objectKey}
+                            className="player-link"
+                          >
+                            {player.name}
+                          </Link>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            ))}
+          </div>
         </React.Fragment>
       );
     }

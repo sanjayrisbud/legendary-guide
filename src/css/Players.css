@@ -1,17 +1,18 @@
-.players-table {
-  padding-left: 20%;
-}
-
-.player-listing {
-  font: 1em sans-serif;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: medium;
-  color: black;
+.grid-container {
+  display: grid;
+  width: 60%;
+  grid-template-columns: auto auto;
+  grid-gap: 10px;
+  padding-left: 15%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .player-link {
   color: black;
-  padding-left: 10px;
+  padding-left: 8px;
+  font-size: medium;
+  text-align: left;
 }
 
 .player-link:hover {
@@ -19,17 +20,45 @@
 }
 
 .player-thumbnail {
-  height: 40px;
-  width: 30px;
-  padding-right: 10px;
+  height: 50px;
+  width: 40px;
 }
 
 .player-jersey {
-  font-size: 25px;
-  width: 15px;
+  font-size: 20px;
+  width: 5px;
   text-align: right;
 }
 
-.player-position {
-  padding-left: 7px;
+.player-container {
+  padding-left: 30%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.player-image {
+  height: 250px;
+  width: 300px;
+}
+
+.btn-delete {
+  background-color: darkred;
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 12px;
+  border-radius: 8px;
+}
+
+.btn-edit {
+  background-color: darkgreen;
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 12px;
+  border-radius: 8px;
 }
