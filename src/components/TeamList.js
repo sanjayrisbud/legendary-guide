@@ -36,12 +36,25 @@ class TeamList extends Component {
 
   render() {
     const { error, isLoaded, teams } = this.state;
+    let html = null;
     if (error) {
-      return <div>Error: {error.message}</div>;
+      html = <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
-      return <div>Loading...</div>;
+      html = <div>Loading...</div>;
+    } else if (this.props.type === "select") {
+      html = (
+        <select value={this.props.value} onChange={this.props.onChange}>
+          <option></option>
+          {teams.map((team) => (
+            <option
+              key={team.id}
+              value={team.id}
+            >{`${team.city} ${team.name}`}</option>
+          ))}
+        </select>
+      );
     } else {
-      return (
+      html = (
         <div>
           {teams.map((team) => (
             <div key={team.id} onClick={() => this.props.sidebarOpen(false)}>
@@ -60,6 +73,7 @@ class TeamList extends Component {
         </div>
       );
     }
+    return html;
   }
 }
 

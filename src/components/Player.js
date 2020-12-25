@@ -92,7 +92,15 @@ class Player extends Component {
               </tr>
               <tr>
                 <td className="btn-container" colSpan="2">
-                  <button className="btn-edit">Edit</button>
+                  <Link
+                    to={{
+                      pathname: "/edit/" + player.objectKey,
+                      player: player,
+                    }}
+                    className="btn-edit"
+                  >
+                    Edit
+                  </Link>
                   <button
                     className="btn-delete"
                     onClick={() => this.confirmDelete(player.team)}

@@ -5,6 +5,7 @@ import Roster from "./components/Roster";
 import TeamList from "./components/TeamList";
 import "./App.css";
 import Player from "./components/Player";
+import AddEdit from "./components/AddEdit";
 
 class App extends React.Component {
   constructor(props) {
@@ -38,6 +39,7 @@ class App extends React.Component {
             <Switch>
               <Route path="/roster/:id" component={Roster} key={Date()} />
               <Route path="/player/:id" component={Player} key={Date()} />
+              <Route path="/edit/:id" component={AddEdit} key={Date()} />
             </Switch>
           </Sidebar>
         </Router>
