@@ -38,7 +38,7 @@ class Roster extends Component {
   }
 
   componentDidMount() {
-    this.getRoster();
+    if (this.state.id !== "undefined") this.getRoster();
   }
 
   componentDidUpdate() {
@@ -50,12 +50,24 @@ class Roster extends Component {
 
   render() {
     const { error, isLoaded, players } = this.state;
+    let html;
     if (error) {
-      return <div>Error: {error.message}</div>;
+      html = <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
-      return <div>Loading...</div>;
+      html = <div>Loading...</div>;
+    } else if (players.length === 0) {
+      html = (
+        <React.Fragment>
+          <div>&nbsp;</div>
+          <div>&nbsp;</div>
+          <div>&nbsp;</div>
+          <div align="center">
+            <img src="../assets/nba-big-logo-500x275.png" alt="nba logo" />
+          </div>
+        </React.Fragment>
+      );
     } else {
-      return (
+      html = (
         <React.Fragment>
           <Team id={this.state.id} />
           <div className="grid-container">
@@ -94,6 +106,7 @@ class Roster extends Component {
         </React.Fragment>
       );
     }
+    return html;
   }
 }
 
