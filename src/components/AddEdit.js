@@ -82,7 +82,6 @@ class AddEdit extends Component {
         },
         body: JSON.stringify(p),
       };
-      console.log(requestOptions);
 
       fetch(url, requestOptions).then((res) => {
         return res;
